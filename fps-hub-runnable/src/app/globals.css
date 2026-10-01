@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 0 0% 98%;
+    --bg-card: 0 0% 100%;
+    --bg-subtle: 220 14% 96%;
+    --fg: 222 47% 11%;
+    --fg-muted: 215 16% 47%;
+    --fg-subtle: 215 13% 65%;
+    --border: 220 13% 91%;
+    --brand: 221 83% 53%;
+    --brand-fg: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+  }
+
+  .dark {
+    --bg: 222 47% 9%;
+    --bg-card: 222 47% 11%;
+    --bg-subtle: 222 47% 13%;
+    --fg: 210 40% 96%;
+    --fg-muted: 215 20% 65%;
+    --fg-subtle: 215 16% 47%;
+    --border: 217 33% 18%;
+    --brand: 217 91% 60%;
+    --brand-fg: 0 0% 100%;
+    --destructive: 0 63% 61%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: hsl(var(--bg));
+    color: hsl(var(--fg));
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: hsl(var(--brand) / 0.2);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--fg-subtle));
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[hsl(var(--bg-card))] border border-[hsl(var(--border))] rounded-[var(--radius)] shadow-card;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-[var(--radius-sm)] 
+           bg-[hsl(var(--brand))] text-[hsl(var(--brand-fg))] font-medium text-sm
+           hover:bg-[hsl(221_83%_47%)] active:scale-[0.98] transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-[var(--radius-sm)]
+           bg-[hsl(var(--bg-subtle))] text-[hsl(var(--fg))] font-medium text-sm border border-[hsl(var(--border))]
+           hover:bg-[hsl(var(--border))] active:scale-[0.98] transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-[var(--radius-sm)]
+           text-[hsl(var(--fg-muted))] font-medium text-sm
+           hover:bg-[hsl(var(--bg-subtle))] hover:text-[hsl(var(--fg))] active:scale-[0.98] transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input {
+    @apply w-full px-3 py-2.5 rounded-[var(--radius-sm)] border border-[hsl(var(--border))]
+           bg-[hsl(var(--bg-card))] text-[hsl(var(--fg))] text-sm
+           placeholder:text-[hsl(var(--fg-subtle))]
+           focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand))] focus:border-transparent
+           disabled:opacity-50 disabled:cursor-not-allowed
+           transition-shadow duration-150;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-[hsl(var(--fg-muted))] mb-1.5;
+  }
+
+  .skeleton {
+    @apply bg-[hsl(var(--bg-subtle))] rounded-[var(--radius-sm)] animate-pulse;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .divider {
+    @apply border-0 border-t border-[hsl(var(--border))] my-4;
+  }
+
+  .link {
+    @apply text-[hsl(var(--brand))] hover:underline transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-fg { color: hsl(var(--fg)); }
+  .text-fg-muted { color: hsl(var(--fg-muted)); }
+  .text-fg-subtle { color: hsl(var(--fg-subtle)); }
+  .bg-card { background-color: hsl(var(--bg-card)); }
+  .bg-subtle { background-color: hsl(var(--bg-subtle)); }
+  .bg-base { background-color: hsl(var(--bg)); }
+  .border-base { border-color: hsl(var(--border)); }
+  .ring-brand { --tw-ring-color: hsl(var(--brand)); }
+}
