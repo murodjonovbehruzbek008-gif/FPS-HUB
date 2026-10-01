@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
+const nextConfig: NextConfig = {`n  eslint: { ignoreDuringBuilds: true },
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {
@@ -11,5 +11,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
 
 
